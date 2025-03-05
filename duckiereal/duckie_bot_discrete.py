@@ -8,7 +8,6 @@ import socket
 import curses
 import numpy as np
 import rospy
-from duckietown_msgs.msg import WheelsCmdStamped
 from matplotlib import pyplot as plt
 from pandas.core.sample import process_sampling_size
 from sensor_msgs.msg import CompressedImage
