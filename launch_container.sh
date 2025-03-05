@@ -25,7 +25,6 @@ else
     # Le conteneur n'existe pas, on le crée et on le démarre
     echo "Création et démarrage d'un nouveau conteneur duckie-container..."
     docker run -it --name duckie-container \
-      --gpus all \
       -e DISPLAY=$DISPLAY \
       -e XAUTHORITY=$XAUTH \
       -v $XAUTH:$XAUTH \
@@ -35,5 +34,5 @@ else
       --privileged \
       --network=host \
       --ipc=host \
-      duckie-course bash
+      indepthrl bash
 fi
