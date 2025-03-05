@@ -165,8 +165,17 @@ def compute_custom_reward(obs, a):
             x_white_center, y_white_center,
             distance_from_blue,
             distance_from_white,
-            action_fased_on_white,
+            action_based_on_white,
             action_based_on_blue,
         ) = process_image(obs)
-        reward = 0.0 #TODO
+        v_point, theta_point = a
+        if x_blue_center == None or y_blue_center == None :
+            return -1
+        if x_white_center == None or y_white_center == None :
+            return -3
+        max_reward = 2
+        reward = 0
+        reward += (25 - distance_from_blue)*max_reward
+        reward += (25 - distance_from_white)*max_reward
+        reward += np.exp(v_point)
         return reward
