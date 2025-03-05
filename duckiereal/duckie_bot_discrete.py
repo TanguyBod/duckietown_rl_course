@@ -17,7 +17,6 @@ from gymnasium import Env
 from std_msgs.msg import Int32
 from cv_bridge import CvBridge
 import threading
-from duckiereal.utils import process_image
 import pickle
 
 
@@ -125,14 +124,8 @@ class DuckieBotDiscrete(Env):
 
         # WARNING the following code call reset which call step: possible infinite recursive calls
         # Verify if we lost the center line
-        x_blue_center = process_image(self.last_observation)[0]
-        reward = 0
-        terminate = x_blue_center is None
-        if x_blue_center is None:
-            reward = -100
-            self.reset()
 
-        return self.last_observation, reward, terminate, terminate, {}
+        return self.last_observation, reward, False, False, {}
 
     def reset(self, seed=None, options=None):
         
