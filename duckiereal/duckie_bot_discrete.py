@@ -19,7 +19,7 @@ from gymnasium import Env
 from std_msgs.msg import Int32
 from cv_bridge import CvBridge
 import threading
-from environments.real_world_environment.utils import process_image
+from duckiereal.utils import process_image
 import pickle
 
 
