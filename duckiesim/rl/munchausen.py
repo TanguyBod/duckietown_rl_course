@@ -12,7 +12,7 @@ import torch.optim as optim
 import torch.nn.functional as F
 import tyro
 import pandas as pd
-from duckietown_rl_course.duckiesim.rl.process_data_with_reward import process_dataset
+from duckiesim.rl.process_data_with_reward import process_dataset
 # from stable_baselines3.common.atari_wrappers import (
 #     ClipRewardEnv,
 #     EpisodicLifeEnv,
@@ -21,8 +21,8 @@ from duckietown_rl_course.duckiesim.rl.process_data_with_reward import process_d
 #     NoopResetEnv,
 # )
 from stable_baselines3.common.buffers import ReplayBuffer
-from duckietown_rl_course.duckietownrl.gym_duckietown import envs
-from duckietown_rl_course.duckiesim.rl.rl_utils import evaluate
+from duckietownrl.gym_duckietown import envs
+from duckiesim.rl.rl_utils import evaluate
 import wandb
 import plotext
 

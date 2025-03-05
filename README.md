@@ -1,4 +1,6 @@
 # RL in Depth
+lambda_kl = 0.1
+lambda_h = 0.2
 
 Welcome to the Reinforcement Learning (RL) workshop! In this class, you will 
 embark on an exciting three-day journey to deepen your understanding of RL by 
