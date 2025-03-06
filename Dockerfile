@@ -58,26 +58,15 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Configuration des variables d'environnement
-ENV DISPLAY=:1
-ENV ROBOT_NAME="paperino"
-ENV MESA_GL_VERSION_OVERRIDE=3.3
-ENV PYGLET_GRAPHICS_INSTALLATION=headless
-ENV PYOPENGL_PLATFORM=egl
+# # Configuration des variables d'environnement
+# ENV DISPLAY=:1
+# ENV ROBOT_NAME="paperino"
+# ENV MESA_GL_VERSION_OVERRIDE=3.3
+# ENV PYGLET_GRAPHICS_INSTALLATION=headless
+# ENV PYOPENGL_PLATFORM=egl
 
 # Ajouter la configuration Xvfb au .bashrc pour qu'elle s'exécute à chaque ouverture de console
 RUN echo '# Configuration automatique de Xvfb' >> /root/.bashrc && \
-    # echo 'pkill Xvfb > /dev/null 2>&1 || true' >> /root/.bashrc && \
-    # echo 'Xvfb :1 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset &' >> /root/.bashrc && \
-    # echo 'sleep 1' >> /root/.bashrc && \
-    echo 'export DISPLAY=localhost:10.0' >> /root/.bashrc && \
-    # echo 'export MESA_GL_VERSION_OVERRIDE=3.3' >> /root/.bashrc && \
-    # echo 'export PYGLET_GRAPHICS_INSTALLATION=headless' >> /root/.bashrc && \
-    # echo 'export PYOPENGL_PLATFORM=egl' >> /root/.bashrc && \
-    # echo 'export PYGLET_SHADOW_WINDOW=1' >> /root/.bashrc && \
-    # echo 'export PYOPENGL_PLATFORM=osmesa' >> /root/.bashrc && \
-    # echo 'export QT_X11_NO_MITSHM=1' >> /root/.bashrc && \
-    # echo 'echo "Xvfb et variables OpenGL configurés automatiquement."' >> /root/.bashrc && \
     echo 'export PYTHONUNBUFFERED=1' >> /root/.bashrc && \
     echo 'export MESA_GL_VERSION_OVERRIDE=3.3' >> /root/.bashrc && \
     echo 'export PYGLET_DEBUG_GL=True' >> /root/.bashrc && \

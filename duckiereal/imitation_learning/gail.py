@@ -11,8 +11,8 @@ import torch.nn.functional as F
 import torch.optim as optim
 import tyro
 from stable_baselines3.common.buffers import ReplayBuffer
-from duckietown_rl_course.duckietownrl.gym_duckietown import envs
-from duckietown_rl_course.duckiesim.rl.munchausen import QNetwork
+from duckietownrl.gym_duckietown import envs
+from duckiesim.rl.munchausen import QNetwork
 import pandas as pd
 
 from tqdm import tqdm

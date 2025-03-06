@@ -1,12 +1,16 @@
 #!/bin/bash
 
 
+xhost +local:docker # Autoriser le conteneur à afficher des fenêtres sur l'hôte
+
+
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 # Créer le fichier d'autorisation X
 XAUTH=/tmp/.docker.xauth
 touch $XAUTH
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+
 
 # Vérifie si le conteneur existe déjà et s'il est en cours d'exécution
 CONTAINER_RUNNING=$(docker ps -q -f name=duckie-container)
@@ -35,5 +39,5 @@ else
       --privileged \
       --network=host \
       --ipc=host \
-      duckie-course bash
+      indepthrl bash
 fi
