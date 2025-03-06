@@ -84,5 +84,8 @@ RUN /opt/conda/bin/conda run -n duckietownrl pip uninstall -y pyglet
 RUN /opt/conda/bin/conda run -n duckietownrl pip install pyglet==1.5.11
 RUN /opt/conda/bin/conda run -n duckietownrl pip install pygame
 
+# Configuration Git pour le répertoire de travail
+RUN sudo git config --system --add safe.directory /home/duckietown_rl_course && \
+    sudo git config --system --add safe.directory '*'
 
 
