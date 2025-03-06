@@ -19,12 +19,12 @@ CONTAINER_EXISTS=$(docker ps -aq -f name=duckie-container)
 if [ -n "$CONTAINER_RUNNING" ]; then
     # Le conteneur est en cours d'exécution, on s'y connecte simplement
     echo "Connexion au conteneur duckie-container déjà en cours d'exécution..."
-    docker exec -it duckie-container bash
+    docker exec -it duckie-container bash -c "export DISPLAY=$DISPLAY && export XAUTHORITY=$XAUTH && bash"
 elif [ -n "$CONTAINER_EXISTS" ]; then
     # Le conteneur existe mais n'est pas en cours d'exécution, on le démarre
     echo "Démarrage du conteneur duckie-container existant..."
     docker start duckie-container
-    docker exec -it duckie-container bash
+    docker exec -it duckie-container bash -c "export DISPLAY=$DISPLAY && export XAUTHORITY=$XAUTH && bash"
 else
     # Le conteneur n'existe pas, on le crée et on le démarre
     echo "Création et démarrage d'un nouveau conteneur duckie-container..."
