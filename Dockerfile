@@ -88,4 +88,5 @@ RUN /opt/conda/bin/conda run -n duckietownrl pip install pygame
 RUN sudo git config --system --add safe.directory /home/duckietown_rl_course && \
     sudo git config --system --add safe.directory '*'
 
+RUN echo 'alias python="xvfb-run python"' >> /root/.bashrc
 
