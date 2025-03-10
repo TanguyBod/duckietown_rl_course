@@ -1,0 +1,19 @@
+/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/envs/registration.py:485: UserWarning: [33mWARN: The environment creator metadata doesn't include `render_modes`, contains: ['render.modes', 'video.frames_per_second'][0m
+  logger.warn(
+INFO:duckietown_world: data: [38;5;127m/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/duckietown_world/data[0m
+Chargement du dataset depuis : /home/duckietown_rl_course/duckiesim/manual/dataset/expert_data_36591.parquet
+/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/envs/registration.py:485: UserWarning: [33mWARN: The environment creator metadata doesn't include `render_modes`, contains: ['render.modes', 'video.frames_per_second'][0m
+  logger.warn(
+ 94%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████        | 34370/36591 [00:03<00:00, 9779.66it/s]
+Traceback (most recent call last):
+  File "munchausen.py", line 251, in <module>
+    rb = load_dataset_to_buffer(args.file_dataset, rb, envs.single_observation_space, args.env_id)
+  File "munchausen.py", line 146, in load_dataset_to_buffer
+    s_data, a_data, r_data, d_data, next_s_data = process_dataset(s_data, a_data, r_data, d_data, next_s_data, gym.make(env_id))
+  File "/home/duckietown_rl_course/duckiesim/rl/process_data_with_reward.py", line 29, in process_dataset
+    reward = compute_custom_reward(obs, env.unwrapped.actions[a]) if not d else r_data[i]
+  File "/home/duckietown_rl_course/duckiesim/rl/custom_reward_function.py", line 170, in compute_custom_reward
+    ) = process_image(obs)
+  File "/home/duckietown_rl_course/duckiesim/rl/custom_reward_function.py", line 63, in process_image
+    M = cv2.moments(contour)
+KeyboardInterrupt

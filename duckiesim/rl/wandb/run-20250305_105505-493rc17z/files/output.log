@@ -1,0 +1,21 @@
+/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/envs/registration.py:485: UserWarning: [33mWARN: The environment creator metadata doesn't include `render_modes`, contains: ['render.modes', 'video.frames_per_second'][0m
+  logger.warn(
+INFO:duckietown_world: data: [38;5;127m/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/duckietown_world/data[0m
+Chargement du dataset depuis : /home/duckietown_rl_course/duckiesim/manual/dataset/expert_data_36591.parquet
+Traceback (most recent call last):
+  File "munchausen.py", line 251, in <module>
+    rb = load_dataset_to_buffer(args.file_dataset, rb, envs.single_observation_space, args.env_id)
+  File "munchausen.py", line 134, in load_dataset_to_buffer
+    df = pd.read_parquet(file_path)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/pandas/io/parquet.py", line 509, in read_parquet
+    return impl.read(
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/pandas/io/parquet.py", line 227, in read
+    pa_table = self.api.parquet.read_table(
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/pyarrow/parquet/core.py", line 1793, in read_table
+    dataset = ParquetDataset(
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/pyarrow/parquet/core.py", line 1360, in __init__
+    [fragment], schema=schema or fragment.physical_schema,
+  File "pyarrow/_dataset.pyx", line 1431, in pyarrow._dataset.Fragment.physical_schema.__get__
+  File "pyarrow/error.pxi", line 155, in pyarrow.lib.pyarrow_internal_check_status
+  File "pyarrow/error.pxi", line 92, in pyarrow.lib.check_status
+pyarrow.lib.ArrowInvalid: Could not open Parquet input source '<Buffer>': Parquet magic bytes not found in footer. Either the file is corrupted or this is not a parquet file.

@@ -1,0 +1,1 @@
+{"_timestamp":1.741182657434154e+09,"charts/mean_reward_batch":26.504194259643555,"losses/td_loss":2222.4609375,"losses/q_values":305.25909423828125,"_runtime":1651.536189391,"losses/entropy":-0.4777814447879791,"_step":27264,"_wandb":{"runtime":1651},"charts/episodic_return":45165.64054200626,"charts/SPS":16,"charts/episodic_length":1500}

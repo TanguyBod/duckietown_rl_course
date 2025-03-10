@@ -1,0 +1,60 @@
+/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/envs/registration.py:485: UserWarning: [33mWARN: The environment creator metadata doesn't include `render_modes`, contains: ['render.modes', 'video.frames_per_second'][0m
+  logger.warn(
+INFO:duckietown_world: data: [38;5;127m/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/duckietown_world/data[0m
+Error in sys.excepthook:
+Traceback (most recent call last):
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/linecache.py", line 47, in getlines
+    return updatecache(filename, module_globals)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/linecache.py", line 136, in updatecache
+    with tokenize.open(fullname) as fp:
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/tokenize.py", line 394, in open
+    encoding, lines = detect_encoding(buffer.readline)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/tokenize.py", line 363, in detect_encoding
+    first = read_or_stop()
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/tokenize.py", line 321, in read_or_stop
+    return readline()
+KeyboardInterrupt
+
+Original exception was:
+Traceback (most recent call last):
+  File "munchausen.py", line 236, in <module>
+    optimizer = optim.Adam(q_network.parameters(), lr=args.learning_rate)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/torch/optim/adam.py", line 73, in __init__
+    super().__init__(params, defaults)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/torch/optim/optimizer.py", line 367, in __init__
+    self.add_param_group(cast(dict, param_group))
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/torch/_compile.py", line 26, in inner
+    import torch._dynamo
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/torch/_dynamo/__init__.py", line 2, in <module>
+    from . import convert_frame, eval_frame, resume_execution
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/torch/_dynamo/convert_frame.py", line 39, in <module>
+    from torch.fx.experimental.symbolic_shapes import (
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/torch/fx/experimental/symbolic_shapes.py", line 64, in <module>
+    from torch.utils._sympy.functions import (
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/torch/utils/_sympy/functions.py", line 6, in <module>
+    import sympy
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/sympy/__init__.py", line 74, in <module>
+    from .polys import (Poly, PurePoly, poly_from_expr, parallel_poly_from_expr,
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/sympy/polys/__init__.py", line 79, in <module>
+    from .polyfuncs import (symmetrize, horner, interpolate,
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/sympy/polys/polyfuncs.py", line 10, in <module>
+    from sympy.polys.specialpolys import (
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/sympy/polys/specialpolys.py", line 298, in <module>
+    from sympy.polys.rings import ring
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/sympy/polys/rings.py", line 30, in <module>
+    from sympy.printing.defaults import DefaultPrinting
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/sympy/printing/__init__.py", line 11, in <module>
+    from .pycode import pycode
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/sympy/printing/pycode.py", line 11, in <module>
+    from .codeprinter import CodePrinter
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/sympy/printing/codeprinter.py", line 13, in <module>
+    from sympy.functions.elementary.complexes import re
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/sympy/functions/__init__.py", line 46, in <module>
+    from sympy.functions.special.spherical_harmonics import Ynm, Ynm_c, Znm
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 839, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 934, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1033, in get_data
+KeyboardInterrupt

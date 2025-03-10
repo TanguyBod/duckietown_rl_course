@@ -1,0 +1,63 @@
+--------------------------
+cuda
+/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/envs/registration.py:485: UserWarning: [33mWARN: The environment creator metadata doesn't include `render_modes`, contains: ['render.modes', 'video.frames_per_second'][0m
+  logger.warn(
+INFO:duckietown_world: data: [38;5;127m/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/duckietown_world/data[0m
+Chargement du dataset depuis : /home/duckietown_rl_course/duckiesim/manual/dataset/expert_data_36591.parquet
+/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/envs/registration.py:485: UserWarning: [33mWARN: The environment creator metadata doesn't include `render_modes`, contains: ['render.modes', 'video.frames_per_second'][0m
+  logger.warn(
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 36591/36591 [00:03<00:00, 9612.02it/s]
+SEEEEEEEEEEEEEEEEEEEEEED :  1
+SEEEEEEEEEEEEEEEEEEEEEED :  1
+SEEEEEEEEEEEEEEEEEEEEEED :  2
+SEEEEEEEEEEEEEEEEEEEEEED :  3
+SEEEEEEEEEEEEEEEEEEEEEED :  4
+SEEEEEEEEEEEEEEEEEEEEEED :  5
+SEEEEEEEEEEEEEEEEEEEEEED :  6
+Traceback (most recent call last):
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/geometry/manifolds/special_euclidean_group.py", line 76, in belongs
+    self.SOn.belongs(R)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/geometry/manifolds/special_orthogonal_group.py", line 39, in belongs
+    assert_allclose(det, 1, err_msg="I expect the determinant to be +1.")
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/numpy/testing/_private/utils.py", line 1530, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/numpy/testing/_private/utils.py", line 798, in assert_array_compare
+    reduced = val.ravel()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "munchausen.py", line 363, in <module>
+    eval_score = evaluate(q_network, args.env_id, seed=args.seed, tau=args.tau_soft)
+  File "/home/duckietown_rl_course/duckiesim/rl/rl_utils.py", line 36, in evaluate
+    obs, reward, done, _, _ = env.step(action)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/wrappers/common.py", line 125, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/wrappers/common.py", line 393, in step
+    return super().step(action)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/core.py", line 322, in step
+    return self.env.step(action)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/wrappers/common.py", line 285, in step
+    return self.env.step(action)
+  File "/home/duckietown_rl_course/duckietownrl/gym_duckietown/envs/duckietown_discrete_env.py", line 100, in step
+    obs, reward, done, info = Simulator.step(self, vels)
+  File "/home/duckietown_rl_course/duckietownrl/gym_duckietown/simulator.py", line 2078, in step
+    self.update_physics(action)
+  File "/home/duckietown_rl_course/duckietownrl/gym_duckietown/simulator.py", line 1621, in update_physics
+    self.cur_pos, self.cur_angle = _update_pos(self, action)
+  File "/home/duckietown_rl_course/duckietownrl/gym_duckietown/simulator.py", line 2528, in _update_pos
+    self.state = self.state.integrate(self.delta_time, action)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/duckietown_world/world_duckietown/dynamics_delay.py", line 80, in integrate
+    state2 = self.state.integrate(dt, use_commands)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/duckietown_world/world_duckietown/pwm_dynamics.py", line 225, in integrate
+    return DynamicModel(
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/duckietown_world/world_duckietown/pwm_dynamics.py", line 135, in __init__
+    GenericKinematicsSE2.__init__(self, c0, t0)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/duckietown_world/world_duckietown/generic_kinematics.py", line 26, in __init__
+    geo.SE2.belongs(q0)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/geometry/manifolds/special_euclidean_group.py", line 79, in belongs
+    raise ValueError(msg)
+ValueError: The rotation is not a rotation:
+[[-0.73223467 -0.68105241]
+ [ 0.68105241 -0.73223467]]

@@ -1,0 +1,9 @@
+{"time":"2025-03-05T14:03:22.291597705Z","level":"INFO","msg":"stream: starting","core version":"0.19.7","symlink path":"/home/duckietown_rl_course/duckiesim/rl/wandb/run-20250305_140322-4e0b6xpp/logs/debug-core.log"}
+{"time":"2025-03-05T14:03:22.394759059Z","level":"INFO","msg":"created new stream","id":"4e0b6xpp"}
+{"time":"2025-03-05T14:03:22.394799857Z","level":"INFO","msg":"stream: started","id":"4e0b6xpp"}
+{"time":"2025-03-05T14:03:22.394832056Z","level":"INFO","msg":"writer: Do: started","stream_id":"4e0b6xpp"}
+{"time":"2025-03-05T14:03:22.394862155Z","level":"INFO","msg":"sender: started","stream_id":"4e0b6xpp"}
+{"time":"2025-03-05T14:03:22.395495529Z","level":"INFO","msg":"handler: started","stream_id":"4e0b6xpp"}
+{"time":"2025-03-05T14:03:22.648391666Z","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-05T14:03:22.648703254Z","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-03-05T18:30:08.190694772Z","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/tanguyb-isae-supaero/DuckieTownRL/4e0b6xpp/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}

@@ -1,0 +1,16 @@
+{"time":"2025-03-05T12:58:51.919601931Z","level":"INFO","msg":"stream: starting","core version":"0.19.7","symlink path":"/home/duckietown_rl_course/duckiesim/rl/wandb/run-20250305_125851-qr0gkghm/logs/debug-core.log"}
+{"time":"2025-03-05T12:58:52.022788001Z","level":"INFO","msg":"created new stream","id":"qr0gkghm"}
+{"time":"2025-03-05T12:58:52.022828399Z","level":"INFO","msg":"stream: started","id":"qr0gkghm"}
+{"time":"2025-03-05T12:58:52.022850698Z","level":"INFO","msg":"writer: Do: started","stream_id":"qr0gkghm"}
+{"time":"2025-03-05T12:58:52.022897396Z","level":"INFO","msg":"handler: started","stream_id":"qr0gkghm"}
+{"time":"2025-03-05T12:58:52.022975793Z","level":"INFO","msg":"sender: started","stream_id":"qr0gkghm"}
+{"time":"2025-03-05T12:58:52.3082243Z","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-05T12:58:52.308497689Z","level":"ERROR","msg":"git repo not found","error":"repository does not exist"}
+{"time":"2025-03-05T13:00:47.394995439Z","level":"INFO","msg":"stream: closing","id":"qr0gkghm"}
+{"time":"2025-03-05T13:00:47.395048837Z","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-05T13:00:47.396130193Z","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-05T13:00:47.984263041Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-05T13:00:48.189614509Z","level":"INFO","msg":"handler: closed","stream_id":"qr0gkghm"}
+{"time":"2025-03-05T13:00:48.189636208Z","level":"INFO","msg":"writer: Close: closed","stream_id":"qr0gkghm"}
+{"time":"2025-03-05T13:00:48.189676406Z","level":"INFO","msg":"sender: closed","stream_id":"qr0gkghm"}
+{"time":"2025-03-05T13:00:48.189727404Z","level":"INFO","msg":"stream: closed","id":"qr0gkghm"}

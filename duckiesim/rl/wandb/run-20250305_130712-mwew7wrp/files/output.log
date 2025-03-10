@@ -1,0 +1,32 @@
+/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/envs/registration.py:485: UserWarning: [33mWARN: The environment creator metadata doesn't include `render_modes`, contains: ['render.modes', 'video.frames_per_second'][0m
+  logger.warn(
+INFO:duckietown_world: data: [38;5;127m/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/duckietown_world/data[0m
+Chargement du dataset depuis : /home/duckietown_rl_course/duckiesim/manual/dataset/expert_data_36591.parquet
+/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/envs/registration.py:485: UserWarning: [33mWARN: The environment creator metadata doesn't include `render_modes`, contains: ['render.modes', 'video.frames_per_second'][0m
+  logger.warn(
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 36591/36591 [00:03<00:00, 9527.77it/s]
+SEEEEEEEEEEEEEEEEEEEEEED :  1
+SEEEEEEEEEEEEEEEEEEEEEED :  1
+SEEEEEEEEEEEEEEEEEEEEEED :  2
+SEEEEEEEEEEEEEEEEEEEEEED :  3
+SEEEEEEEEEEEEEEEEEEEEEED :  4
+SEEEEEEEEEEEEEEEEEEEEEED :  5
+SEEEEEEEEEEEEEEEEEEEEEED :  6
+SEEEEEEEEEEEEEEEEEEEEEED :  7
+SEEEEEEEEEEEEEEEEEEEEEED :  8
+SEEEEEEEEEEEEEEEEEEEEEED :  9
+SEEEEEEEEEEEEEEEEEEEEEED :  10
+model saved to model/exp_0
+Step: 1, Eval score: 1079.1412147474632
+Traceback (most recent call last):
+  File "munchausen.py", line 297, in <module>
+    next_obs, rewards, terminations, truncations, infos = envs.step(actions)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/vector/sync_vector_env.py", line 222, in step
+    ) = self.envs[i].step(action)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/wrappers/common.py", line 513, in step
+    obs, reward, terminated, truncated, info = super().step(action)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/core.py", line 322, in step
+    return self.env.step(action)
+  File "/opt/conda/envs/duckietownrl/lib/python3.8/site-packages/gymnasium/wrappers/common.py", line 128, in step
+    if self._elapsed_steps >= self._max_episode_steps:
+KeyboardInterrupt
