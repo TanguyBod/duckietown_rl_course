@@ -1,3 +1,4 @@
+
 # RL in Depth
 lambda_kl = 0.1
 lambda_h = 0.2
@@ -20,37 +21,25 @@ robot.
 Through this hands-on experience, you will gain practical insights into:
 - Refining your understanding of Reinforcement Learning.
 - Designing an RL agent suitable for controlling a two-wheeled robot.
-- Deploying and testing your solution on hardware, addressing real-world 
-  constraints such as sensor limitations, latency, and computational resources.
+
 
 ## Organization
 
 ### Prerequisites (Docker)
-First, you need to install docker (if you haven't already) by following the 
-instructions in the [Docker installation guide](https://docs.docker.com/get-docker/).
-Then follow the instructions in the [Docker initialization](#docker-initialization) 
-section to build and run the docker image.
+First, you need to install docker (if you haven't already) by following the instructions in the [Docker installation guide](https://docs.docker.com/get-docker/).
+Then follow the instructions in the [Docker initialization](#docker-initialization) section to build and run the docker image.
 
 ### Day 1: Discovery and Exploration
-- **Morning**: Students will familiarize themselves with the simulator that 
-  models the Duckiebot and train an RL agent using the provided instructions in 
-  [duckiesim.md](duckiesim/duckiesim.md) file. This file explains how to set up 
-  the environment and guides students through the first steps of training.
-- **Afternoon**: Students will first get hands-on experience with the real 
-  Duckiebots. Then, they will form groups to brainstorm and develop a solution 
-  for automating the robot using RL. The entire process of deploying RL in the 
-  real world is detailed in [duckiereal.md](duckiereal/duckiereal.md) file.
+- Students will familiarize themselves with the simulator that models the Duckiebot and train an RL agent using the provided instructions in [duckiesim.md](duckiesim/duckiesim.md) file. This file explains how to set up the environment and guides students through the first steps of training.
 
 ### Days 2 and 3: Development and Competition
-- Over the next two days, the focus will shift to the development and refinement 
-  of the RL-based solution. Students will test their agents, improve their 
-  models, and prepare for the final competition.
+- Over the next two days, the focus will shift to the development and refinement of the RL-based solution. Students will test their agents, improve their models, and prepare for the final competition.
 
 ### Competition
-At the end of Day 3, the competition will take place on a **circuit unknown to 
-the students**. The objective is to **finish the circuit in minimal time**. 
-The group with the best-performing agent will earn a grade of 20, while others 
-will "strive harder next year" (humor).
+At the end of Day 3, the competition will take place on a **circuit unknown to the students**. The objective is to **finish the circuit in minimal time**. The group with the best-performing agent will earn a grade of 20, while others will "strive harder next year" (humor).
+
+
+
 
 ## Course Schedule
 
@@ -78,14 +67,7 @@ Here is the planned schedule for the three days:
 
 ### Project Presentation and Implementation (18 points)
 
-The project presentation will be a concise demonstration of your work and 
-approach. 
-While slides are not required, you should prepare a well-structured verbal 
-explanation of your methodology, technical choices, and results.
-Be ready to clearly articulate your reasoning, explain the challenges you 
-encountered and how you overcame them, and demonstrate your understanding of 
-the RL algorithms used. What matters most is the quality of your argumentation 
-and your ability to critically analyze your own work, not the visual support.
+The project presentation will be a concise demonstration of your work and approach. While slides are not required, you should prepare a well-structured verbal explanation of your methodology, technical choices, and results. Be ready to clearly articulate your reasoning, explain the challenges you encountered and how you overcame them, and demonstrate your understanding of the RL algorithms used. What matters most is the quality of your argumentation and your ability to critically analyze your own work, not the visual support.
 
 | Criterion | Insufficient | Acceptable | Good | Excellent |
 |---------|-------------------|-----------------|---------------------|-----------------|
@@ -104,38 +86,68 @@ and your ability to critically analyze your own work, not the visual support.
 | 2nd place | 1 points |
 | 3rd place | 0 points |
 
-## Installation and general setup 
 
-### Azure servers
+## AZURE MACHINE 
 
-Some of you might not have access to a GPU or cuda (mac users).
-If this is not your case, you can skip this section.
 
-For your ssh connection, set the '-Y' flag to forward the display to your 
-local machine:
-
-```shell
-ssh -Y user@ip
+### SSH CONNECTION
+Check your ssh IP at the following link: [Azure Portal](https://labs.azure.com/)
+```bash
+ssh -p PORT user1234@IP
 ```
 
-TODO
+### RDP CONNECTION (BUREAU A DISTANCE)
 
-### Docker container
+First install the RDP client on your machine by following the instructions in the [RDP Clients Installation Guide](#rdp-clients-installation-guide) section.
 
-If you are using Azure servers, follow these steps in it.
-Otherwise, you have two solutions:
- - Install docker and run a container (recommended)
- - Install everything directly on your machine, then good luck, everything you 
-   need to know is in the Dockerfile of this repository. 
-   **Note that you will need ros1 which is not available for ubuntu22 and 24.**
 
-Pull this repository (if not done)
+#### RDP Clients Installation Guide
 
+##### Windows
+
+**Microsoft Remote Desktop Client (built-in)**
 ```
-git clone git@github.com:SuReLI/duckietown_rl_course.git && cd duckietown_rl_course
+Press Win + R, type mstsc and press Enter
 ```
 
-Install nvidia-docker2
+##### Linux
+
+**Remmina**
+```bash
+# Ubuntu/Debian
+sudo apt update && sudo apt install remmina remmina-plugin-rdp
+
+# Run from menu or terminal
+remmina
+```
+
+##### macOS
+1. Open App Store
+2. Search for "Microsoft Remote Desktop"
+3. Click "Get" to install
+4. Launch from Launchpad
+
+
+**Microsoft Remote Desktop**
+```
+1. Open App Store
+2. Search for "Microsoft Remote Desktop"
+3. Click "Get" to install
+4. Launch from Launchpad
+```
+
+
+#### Download the RDP file
+Download the RDP file from the following link: [Azure Portal](https://labs.azure.com/)
+
+
+
+
+## Docker initialization
+
+### Install nvidia-docker2
+First, install nvidia-docker2 on your machine to use your gpu in the container:
+
 ```shell
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
@@ -145,45 +157,18 @@ sudo apt-get install -y nvidia-docker2
 sudo systemctl restart docker
 ```
 
-Build the Dockerfile
-```shell
+### Create docker image 
+
+```bash
 docker build -t indepthrl .
 ```
 
-Run new image as a container
-```shell
-bash launch_container.sh
+### Run docker image
+Run the following command to make the script executable:
+```bash
+chmod +x launch_docker.sh
 ```
-The current repository (duckietown_rl_course) has been mounted in the container.
-Every modification here will also modify it in the container at /root/duckietown_rl_course
-
-If you're not in azure server, start your container (`docker start -i duckietownrl`) then enter the following commands.
-**In the first line, replace "paperino" by "gastone" if you use this robot, but you can still change it later.**
-```shell
-export ROBOT_NAME="paperino" && \
-apt update -y && apt install -y dbus avahi-daemon iputils-ping && \
-echo "service dbus start" >> /root/.bashrc && \
-echo "service avahi-daemon start" >> /root/.bashrc && \
-echo "export ROS_MASTER_URI=http://\$ROBOT_NAME.local:11311/" >> /root/.bashrc && \
-echo "export ROS_IP=\$(hostname -I | awk '{print \$1}')" >> /root/.bashrc && \
-echo "export ROS_HOSTNAME=\$ROS_IP" >> /root/.bashrc && \
-. ~/.bashrc
+Run the following command to start the container:
+```bash
+./launch_docker.sh
 ```
-
-Then you can:
- - View the status of your container using `docker ps -a`
- - Start the container using `docker start -i indepthrl_container` Only if the container is not already "Up".
- - Go back inside the container using `docker exec -it indepthrl_container /bin/bash` Only if the container is already "Up".
-**But `bash launch_container.sh` already do this, it will check the container status and start it or execute it as needed.**
-
-Now, test that:
- - The simulator work with `python3 duckiesim/manual/manual_control.py`
- - You can communicate with the robot:
-```shell
-export ROBOT_NAME=<paperino/gastone>
-rostopic list
-```
-
-If you have a long (like more than 10) list of topic with some of them starting with /$ROBOT_NAME/, then you're good. 
-Otherwise, go to duckireal/help.md.
-
