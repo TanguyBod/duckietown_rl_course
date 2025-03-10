@@ -8,8 +8,6 @@ import socket
 import curses
 import numpy as np
 import rospy
-from duckietown_msgs.msg import WheelsCmdStamped
-from matplotlib import pyplot as plt
 from pandas.core.sample import process_sampling_size
 from sensor_msgs.msg import CompressedImage
 from cv_bridge import CvBridge
@@ -19,7 +17,6 @@ from gymnasium import Env
 from std_msgs.msg import Int32
 from cv_bridge import CvBridge
 import threading
-from environments.real_world_environment.utils import process_image
 import pickle
 
 
@@ -127,14 +124,8 @@ class DuckieBotDiscrete(Env):
 
         # WARNING the following code call reset which call step: possible infinite recursive calls
         # Verify if we lost the center line
-        x_blue_center = process_image(self.last_observation)[0]
-        reward = 0
-        terminate = x_blue_center is None
-        if x_blue_center is None:
-            reward = -100
-            self.reset()
 
-        return self.last_observation, reward, terminate, terminate, {}
+        return self.last_observation, reward, False, False, {}
 
     def reset(self, seed=None, options=None):
         

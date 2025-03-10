@@ -4,7 +4,7 @@ import pyarrow
 import pandas
 import pygame
 import sys
-from environments.real_world_environment import DuckieBotDiscrete
+from duckiereal import DuckieBotDiscrete
 
 # Initialize Pygame
 pygame.init()
