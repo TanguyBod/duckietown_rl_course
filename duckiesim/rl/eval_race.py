@@ -74,7 +74,7 @@ def evaluate_with_rendering(model_path, env_id, num_episodes=10, seed=0, tau_sof
 if __name__ == "__main__":
     # model_path /home/dcas/g.ferraro/Desktop/models= "/home/p.le-tolguenec/Documents/duckietown_rl_course/model/exp_1/munchausen_430404_1746.0135750578204.pt"  # Adapter au chemin réel
     model_path = (
-        # "/home/duckietown_rl_course/duckiesim/rl/model/exp_1/munchausen_161063_17919.03119549549.pt"
+        #"/home/duckietown_rl_course/duckiesim/rl/model/exp_1/munchausen_161063_17919.03119549549.pt"
         "/home/duckietown_rl_course/duckiereal/imitation_learning/models_imitation/behavioral_cloning.pt"
     )
 
