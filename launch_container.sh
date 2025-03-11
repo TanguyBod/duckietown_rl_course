@@ -35,6 +35,7 @@ else
       -v /tmp/.X11-unix:/tmp/.X11-unix \
       -v $CURRENT_DIR:/home/duckietown_rl_course/\
       --device /dev/input:/dev/input \
+      --gpus=all \
       --privileged \
       --network=host \
       --ipc=host \
