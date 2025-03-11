@@ -232,6 +232,77 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
     )
     assert isinstance(envs.single_action_space, gym.spaces.Discrete), "only discrete action space is supported"
 
+
+    ### BEHAVIORAL CLONING ###
+    df = pd.read_parquet(args.file_dataset)
+    # Conversion des colonnes en numpy
+    s_data = np.array(df["s"].tolist())
+    s_data = s_data.reshape(len(s_data), *envs.observation_space.shape)[:, None, :, :, :]
+    a_data = df["a"].to_numpy()[:, None, None]
+    r_data = df["r"].to_numpy()[:, None]
+    d_data = df["d"].to_numpy()[:, None]
+    next_s_data = np.array(df["next_s"].tolist())
+    next_s_data = next_s_data.reshape(len(next_s_data), *envs.observation_space.shape)[:, None, :, :, :]
+    
+    
+    # replay buffer expert
+    rb_expert = ReplayBuffer(
+        len(s_data),
+        envs.observation_space,
+        envs.action_space,
+        device,
+        optimize_memory_usage=False,
+        handle_timeout_termination=False,
+    )
+    rb_expert.observations[:len(s_data)] = s_data
+    rb_expert.actions[:len(a_data)] = a_data
+    rb_expert.rewards[:len(r_data)] = r_data
+    rb_expert.dones[:len(d_data)] = d_data
+    rb_expert.next_observations[:len(next_s_data)] = next_s_data
+    rb_expert.pos = len(s_data)
+    
+    # Calculons le nombre d'occurrences de chaque action
+    action_counts = np.bincount(a_data[:, 0, 0].astype(int), minlength=9)
+
+    # Sélectionnons les actions qui sont représentées au moins args.min_counts fois
+    selected_actions = np.where(action_counts >= args.min_counts)[0]
+
+    # Calculons le nombre maximum d'occurrences pour les actions sélectionnées
+    max_count = np.min(action_counts[selected_actions])
+
+    # Effectuons le sous-échantillonnage des actions sélectionnées
+    new_s_data = []
+    new_a_data = []
+    new_r_data = []
+    new_d_data = []
+    new_next_s_data = []
+
+    for i in selected_actions:
+        indices = np.where(a_data[:, 0, 0].astype(int) == i)[0]
+        indices = np.random.choice(indices, size=min(len(indices), max_count), replace=False)
+        new_s_data.append(s_data[indices])
+        new_a_data.append(a_data[indices])
+        new_r_data.append(r_data[indices])
+        new_d_data.append(d_data[indices])
+        new_next_s_data.append(next_s_data[indices])
+
+    # Concaténons les données sous-échantillonnées
+    new_s_data = np.concatenate(new_s_data, axis=0)
+    new_a_data = np.concatenate(new_a_data, axis=0)
+    new_r_data = np.concatenate(new_r_data, axis=0)
+    new_d_data = np.concatenate(new_d_data, axis=0)
+    new_next_s_data = np.concatenate(new_next_s_data, axis=0)
+
+    # Mettons à jour le dataset
+    rb_expert.observations[:len(new_s_data)] = new_s_data
+    rb_expert.actions[:len(new_a_data)] = new_a_data
+    rb_expert.rewards[:len(new_r_data)] = new_r_data
+    rb_expert.dones[:len(new_d_data)] = new_d_data
+    rb_expert.next_observations[:len(new_next_s_data)] = new_next_s_data
+    rb_expert.pos = len(new_s_data)
+    print(f"Expert data size: {len(new_s_data)}")
+
+
     q_network = QNetwork(envs.single_action_space, envs.single_observation_space).to(device)
     optimizer = optim.Adam(q_network.parameters(), lr=args.learning_rate)
     target_network = QNetwork(envs.single_action_space, envs.single_observation_space).to(device)
@@ -329,10 +400,15 @@ poetry run pip install "stable_baselines3==2.0.0a1" "gymnasium[atari,accept-rom-
                     target_next_policy = F.softmax(target_next_q_values / args.tau_soft, dim=-1)
                     red_term = args.alpha * (args.tau_soft * torch.log(target_policy.gather(1, actions)) + args.epsilon_tar).clamp(args.l_0, 0.0)  
                     blue_term = -args.tau_soft * torch.log(target_next_policy + args.epsilon_tar)
+                    # Ajout de la loss pour le behavioral cloning 
+                    labels = torch.zeros_like(target_policy)
+                    labels[torch.arange(len(labels)), actions.squeeze()] = 1
+                    binary_loss = -torch.mean( torch.sum(labels * torch.log(target_policy), dim=-1))
                     munchausen_target = (rewards + red_term + args.gamma * (1 - dones)* (target_next_policy * (target_next_q_values + blue_term)).sum(dim=-1).unsqueeze(-1))
                     td_target = munchausen_target.squeeze()
+                lbd = 1.0
                 old_val = q_network(observations).gather(1, actions).squeeze()
-                loss = F.mse_loss(td_target, old_val)
+                loss = F.mse_loss(td_target, old_val) + lbd*binary_loss
 
                 if global_step % 100 == 0:
                     # writer.add_scalar("losses/td_loss", loss, global_step)
