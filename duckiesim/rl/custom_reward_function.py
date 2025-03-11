@@ -1,4 +1,5 @@
 import cv2 
+from scipy.special import expit
 import numpy as np
 
 
@@ -173,7 +174,8 @@ def compute_custom_reward(obs, a):
             return -1
         max_reward = 1
         reward = 0
-        reward += (40 - distance_from_blue)*max_reward
-        #reward += (25 - distance_from_white)*max_reward
-        reward += np.exp(v_point)*10
+        if (v_point == 0) :
+            reward -= 2
+        reward += distance_from_blue*max_reward/40
+        reward += expit(v_point)
         return reward
