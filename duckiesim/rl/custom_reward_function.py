@@ -170,12 +170,13 @@ def compute_custom_reward(obs, a):
             action_based_on_blue,
         ) = process_image(obs)
         v_point, theta_point = a
-        if x_blue_center == None or y_blue_center == None :
-            return -1
-        max_reward = 1
         reward = 0
+        if x_blue_center == None or y_blue_center == None :
+            reward -= 2
+        elif distance_from_blue>0 :
+            reward -= distance_from_blue*max_reward/40
+        max_reward = 1
         if (v_point == 0) :
             reward -= 2
-        reward += distance_from_blue*max_reward/40
         reward += expit(v_point)
         return reward
